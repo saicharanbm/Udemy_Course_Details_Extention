@@ -1,3 +1,77 @@
+* {
+  margin: 0;
+  padding: 0%;
+  box-sizing: border-box;
+}
+body {
+  width: 250px;
+  background-color: #43c5d5;
+  overflow: hidden;
+}
+.headder {
+  display: flex;
+  justify-content: space-between;
+  padding-inline: 12px;
+}
+#closeButton {
+  border: none;
+  background: none;
+  order: 2;
+  cursor: pointer;
+}
+#icon {
+  margin-top: 2px;
+
+  order: 1;
+
+  width: 24px;
+}
+.container {
+  width: 250px;
+  height: 380px;
+
+  background: white;
+  border-radius: 15px 0 0 0;
+}
 #course_thumbnail {
-  min-width: 130px;
+  width: 220px;
+  height: 110px;
+  margin: 15px;
+  border-radius: 10px;
+}
+
+#udemy-data {
+  padding-inline: 10px;
+  text-align: center;
+  height: 65px;
+  overflow: hidden;
+  font-family: "Times New Roman", Times, serif;
+  text-wrap: wrap;
+}
+
+#course-details {
+  margin: 15px;
+  height: 140px;
+  border: 1px solid black;
+  box-shadow: 10px;
+  border-radius: 10px;
+  padding-inline-start: 6px;
+}
+h3 {
+  font-size: medium;
+}
+
+#ratings {
+  display: inline-block;
+}
+
+.star {
+  display: inline-flex;
+  color: #ccc;
+}
+h4 {
+  padding-top: 5px;
+}
+.rating-text {
+  color: #f69c07;
 }

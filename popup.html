@@ -5,10 +5,40 @@
   </head>
   <link rel="stylesheet" href="style.css" />
   <body>
-    <img id="course_thumbnail" src="error.svg" alt="Course Thumbnail" />
-    <h3 id="udemy-data"></h3>
-    <h5 id="course-date"></h5>
-    <h5 id="update-date"></h5>
-    <script src="popup.js"></script>
+    <div class="headder">
+      <img id="icon" src="icon.png" alt="" />
+      <button id="closeButton"><h3>X</h3></button>
+    </div>
+
+    <div class="container" id="container">
+      <img id="course_thumbnail" src="loading.png" alt="Course Thumbnail" />
+      <h2 id="udemy-data">Loading ...</h2>
+      <div id="course-details">
+        <h4 id="course-date"></h4>
+        <h4 id="update-date"></h4>
+
+        <div class="ratings-stars-container" id="ratings-stars-container">
+          <h4 id="recent-count"></h4>
+          <h4 id="ratings">Ratings :</h4>
+          <h3 class="star rating-text" id="total-rating">0.0</h3>
+          <h2 class="star" id="rating_star1">&#9733;</h2>
+          <h2 class="star" id="rating_star2">&#9733;</h2>
+          <h2 class="star" id="rating_star3">&#9733;</h2>
+          <h2 class="star" id="rating_star4">&#9733;</h2>
+          <h2 class="star" id="rating_star5">&#9733;</h2>
+        </div>
+        <div id="latest-ratings-stars-container">
+          <h4 id="rating-count"></h4>
+          <h4 id="ratings">Recent Ratings :</h4>
+          <h3 class="star rating-text" id="latest-rating">0.0</h3>
+          <h2 class="star" id="latest_star1">&#9733;</h2>
+          <h2 class="star" id="latest_star2">&#9733;</h2>
+          <h2 class="star" id="latest_star3">&#9733;</h2>
+          <h2 class="star" id="latest_star4">&#9733;</h2>
+          <h2 class="star" id="latest_star5">&#9733;</h2>
+        </div>
+      </div>
+    </div>
   </body>
+  <script src="popup.js"></script>
 </html>
