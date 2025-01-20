@@ -52,11 +52,11 @@ chrome.tabs.query({ active: true, lastFocusedWindow: true }, (tabs) => {
         courseDetails.style.display = "block";
         udemyDataElement.textContent = title;
         courseDateElement.textContent = `Created: ${date}`;
-        updateDateElement.textContent = `Last Update: ${updateDate}`;
-        recent_count.textContent = `No of Recent Rating : ${num_reviews_recent}`;
-        rating_count.textContent = `No of Rating : ${num_reviews}`;
-        totalRating.textContent = String(avg_rating).substring(0, 3);
-        latestRating.textContent = String(avg_rating_recent).substring(0, 3);
+        updateDateElement.textContent = `Last Updated: ${updateDate}`;
+        recent_count.textContent = `Recent Rating count : ${num_reviews_recent}`;
+        rating_count.textContent = `Total Rating Count: ${num_reviews}`;
+        totalRating.textContent = avg_rating.toFixed(1);
+        latestRating.textContent = avg_rating_recent.toFixed(1);
 
         courseThumbnail.src = image_240x135;
         for (let i = 1; i <= 5; i++) {
@@ -100,7 +100,10 @@ chrome.tabs.query({ active: true, lastFocusedWindow: true }, (tabs) => {
       courseDetails.style.display = "none";
       container.style.height = "210px";
       courseThumbnail.src = "error.svg";
-      udemyDataElement.textContent = `please visit an Udemy Course page.`;
+      const regex2 = /^https:\/\/www\.udemy\.com\/.*$/;
+      regex2.test(url)
+        ? (udemyDataElement.textContent = `Please visit any Course page.`)
+        : (udemyDataElement.textContent = `Please visit Udemy site.`);
     }
   } else {
     console.log("No active tabs found in the last focused window.");
