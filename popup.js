@@ -2,8 +2,8 @@ const udemyDataElement = document.getElementById("udemy-data");
 const courseDateElement = document.getElementById("course-date");
 const updateDateElement = document.getElementById("update-date");
 const courseThumbnail = document.getElementById("course_thumbnail");
-const recent_count = document.getElementById("rating-count");
-const rating_count = document.getElementById("recent-count");
+const recent_count = document.getElementById("recent-count");
+const rating_count = document.getElementById("rating-count");
 const totalRating = document.getElementById("total-rating");
 const latestRating = document.getElementById("latest-rating");
 const courseDetails = document.getElementById("course-details");
@@ -43,7 +43,7 @@ chrome.tabs.query({ active: true, lastFocusedWindow: true }, (tabs) => {
           image_240x135,
           last_update_date,
           avg_rating_recent,
-          avg_rating,
+          rating,
           num_reviews,
           num_reviews_recent,
         } = data;
@@ -55,24 +55,25 @@ chrome.tabs.query({ active: true, lastFocusedWindow: true }, (tabs) => {
         updateDateElement.textContent = `Last Updated: ${updateDate}`;
         recent_count.textContent = `Recent Rating count : ${num_reviews_recent}`;
         rating_count.textContent = `Total Rating Count: ${num_reviews}`;
-        totalRating.textContent = avg_rating.toFixed(1);
+        totalRating.textContent = rating.toFixed(1);
         latestRating.textContent = avg_rating_recent.toFixed(1);
 
         courseThumbnail.src = image_240x135;
         for (let i = 1; i <= 5; i++) {
           const ratingStar = document.getElementById(`rating_star${i}`);
 
-          if (avg_rating >= i) {
+          if (rating >= i) {
             ratingStar.style.color = "#f69c07";
-          } else if (avg_rating >= i - 1) {
-            const fraction = (avg_rating - (i - 1)) * 100;
+          } else if (rating >= i - 1) {
+            const fraction = (rating - (i - 1)) * 100;
             ratingStar.style.background = `linear-gradient(to right, #f69c07 ${fraction}%, #ccc ${fraction}%)`;
 
             // Set the text to be transparent
             ratingStar.style.color = "transparent";
 
             // Add the -webkit-background-clip for webkit browsers
-            ratingStar.style.webkitBackgroundClip = "text";
+            ratingStar.style.webkitBackgroundClip = "text"; // For WebKit browsers
+            ratingStar.style.backgroundClip = "text"; // Standard property
           } else {
             ratingStar.style.color = "#ccc";
           }
@@ -113,7 +114,7 @@ chrome.tabs.query({ active: true, lastFocusedWindow: true }, (tabs) => {
 async function getCreationDate(courseName) {
   try {
     const response = await fetch(
-      `https://www.udemy.com/api-2.0/courses/${courseName}/?fields[course]=https://www.udemy.com/api-2.0/courses/freelance-web-design-from-design-to-development-to-making-money/?fields[course]=id,image_240x135,num_subscribers,avg_rating,avg_rating_recent,rating,num_reviews,num_reviews_recent,created,title,last_update_date`
+      `https://www.udemy.com/api-2.0/courses/${courseName}/?fields[course]=id,image_240x135,num_subscribers,avg_rating,avg_rating_recent,rating,num_reviews,num_reviews_recent,created,title,last_update_date`
     );
     const data = await response.json();
     // const date = new Date(data.created).toLocaleDateString();
