@@ -2,7 +2,7 @@
   "manifest_version": 3,
   "name": "Udemy Course Insights",
   "version": "1.0",
-  "description": "Your extension description",
+  "description": "Stay informed with key details about Udemy courses effortlessly! This Chrome extension provides valuable insights, including the course creation date, last update date, overall rating and its number, and the latest rating along with its count. Perfect for students and professionals looking to make informed decisions before enrolling in a course.",
 
   "action": {
     "default_popup": "popup.html",
